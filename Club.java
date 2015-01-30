@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Store details of club memberships.
@@ -66,4 +67,42 @@ public class Club
         }
         return contadorSocios;
     }
+
+    /** 
+     * Todos los socios que se han dado de alta un determinado mes de un determinado año se
+     * dan de baja. En caso de que el parametro month contenga un valor no valido se muestra 
+     * por pantalla el error.
+     * @param month El mes en el que estamos interesados
+     * @param year El año en el que estamos interesados
+     * @return Una coleccion con los socios que se han dado de baja del club
+     */
+    public ArrayList<Membership> purge(int month, int year)
+    {
+        // hacemos una lista de miembros
+        ArrayList<Membership> purgados = new ArrayList<Membership>();
+        // Primero comprobamos que el parametro sea valido
+        if ((month >= 1) && (month <= 12))
+        {
+            // Usando un bucle while, comprobamos si se corresponde el miembro
+            // con el mes y año a dar de baja, si no es asi lo borramos
+            Iterator<Membership> it = miembros.iterator();
+            while (it.hasNext())
+            {
+                Membership miembro = it.next();
+                it.remove();
+                // Si coincide, lo borramos y guardamos en la arraylist purgados
+                if (miembro.getMonth() == month && miembro.getYear() == year)
+                {
+                    purgados.add(miembro);
+                    miembros.remove(miembro);
+                }
+            }
+        }
+        else
+        {
+            System.out.println ("El mes introducido no es un valor valido");
+        }
+        return purgados;
+    }
+
 }

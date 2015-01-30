@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Provide a demonstration of the Club and Membership
@@ -32,5 +33,15 @@ public class ClubDemo
         System.out.println("The club has " +
                            club.numberOfMembers() +
                            " members.");
+    }
+    
+    public void test1()
+    {
+        ArrayList<Membership> prueba = new ArrayList<Membership>();
+        prueba = club.purge(1, 2004);
+        for (Membership miembro : prueba)
+        {
+            System.out.println(miembro.toString());
+        }
     }
 }
