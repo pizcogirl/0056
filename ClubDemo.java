@@ -35,13 +35,4 @@ public class ClubDemo
                            " members.");
     }
     
-    public void test1()
-    {
-        ArrayList<Membership> prueba = new ArrayList<Membership>();
-        prueba = club.purge(1, 2004);
-        for (Membership miembro : prueba)
-        {
-            System.out.println(miembro.toString());
-        }
-    }
 }

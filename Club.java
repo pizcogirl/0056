@@ -89,12 +89,11 @@ public class Club
             while (it.hasNext())
             {
                 Membership miembro = it.next();
-                it.remove();
                 // Si coincide, lo borramos y guardamos en la arraylist purgados
-                if (miembro.getMonth() == month && miembro.getYear() == year)
+                if ((miembro.getMonth() == month) && (miembro.getYear() == year))
                 {
                     purgados.add(miembro);
-                    miembros.remove(miembro);
+                    it.remove();
                 }
             }
         }
@@ -105,4 +104,14 @@ public class Club
         return purgados;
     }
 
+    /**
+     * Metodo de prueba, imprime los miembros del club
+     */
+    public void membersList()
+    {
+        for (Membership member : miembros)
+        {
+            System.out.println(member.toString());
+        }
+    }
 }
